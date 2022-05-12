@@ -1,0 +1,50 @@
+@server = http://localhost:4004
+
+###
+POST https://6a506649trial-dev-myapps-srv.cfapps.eu10.hana.ondemand.com/smart-controls/autoapproval
+Content-Type: application/json
+
+{
+    "operator": "NA"
+}
+
+
+### ------------------------------------------------------------------------
+# Get $metadata document
+GET {{server}}/smart-controls/$metadata
+
+### ------------------------------------------------------------------------
+# Get products
+GET {{server}}/smart-controls/Products
+
+### ------------------------------------------------------------------------
+# Update category
+PUT {{server}}/smart-controls/Categories
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+  "CategoryID":1,
+  "CategoryName":"Beverages",
+  "Description":"Soft drinks, coffees, teas, beers, and ales",
+  "Picture":null  
+}
+
+### -------------------------------------------------------------------------
+# Create employees
+POST {{server}}/smart-controls/Employees
+Content-Type: application/json
+
+{
+    "empID" : 2,
+    "empName": "George", 
+    "empAge": 56
+}
+
+### -------------------------------------------------------------------------
+# Update employees
+PATCH {{server}}/smart-controls/Employees/11
+Content-Type: application/json
+
+{
+     "empAge": 42
+}
